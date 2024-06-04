@@ -1,6 +1,4 @@
 terraform {
-  required_version = ">= 1.0.0, < 2.0.0"
-
   backend "s3" {
     bucket         = "susizhou-picture-storage-terraform-state-backend"
     key            = "1_application.tfstate"
@@ -10,8 +8,14 @@ terraform {
   }
 }
 
-provider "aws" {
-  region = "eu-west-2"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+  required_version = ">=1.4.4"
 }
 
 data "aws_caller_identity" "current" {}

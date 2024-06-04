@@ -10,11 +10,10 @@ guard-%:
 # Terraform
 .PHONY: init
 init: guard-MODULE ## Initialises the root module directory
-	terraform -chdir=${DIR} init \
+	terraform -chdir=${DIR} init -upgrade \
 		-backend-config="bucket=susizhou-picture-storage-terraform-state-backend" \
 		-backend-config="dynamodb_table=terraform_state" \
 		-backend-config="region=${BUILD_REGION}" \
-		-lockfile=readonly \
 		-reconfigure
 
 .PHONY: plan
