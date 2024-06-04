@@ -5,7 +5,6 @@ on:
       main
 jobs:
   Hello-World-Job:
-    runs-on: codebuild-self_runners_github_actions-${{ github.run_id }}-${{ github.run_attempt }}-arm-3.0-small
+    runs-on: codebuild-ncrs-int-deployment-${{ github.run_id }}-${{ github.run_attempt }}-arm-3.0-small
     steps:
       - run: echo "Hello World!"
-      
